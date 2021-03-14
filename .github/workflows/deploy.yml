@@ -22,17 +22,24 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: "@volta-cli/action"
+      - name: "Volta: install node & npm"
         uses: volta-cli/action@v1.7.0
-
+        
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: npm install
+        run: npm install
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          volta --version
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Check ember version
+        run: npx ember version
