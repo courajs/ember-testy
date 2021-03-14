@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: "Volta: install node & npm"
         uses: volta-cli/action@v1.7.0
-        
+
       - name: Cache npm cache
         uses: actions/cache@v2
         env:
@@ -35,30 +35,29 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
-      
+
       - name: Cache node_modules
         uses: actions/cache@v2
         env:
-          cache-name: cache-node-modules-1
+          cache-name: cache-node-modules-2
         with:
-          # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.npm
+          path: node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
-            
-      
 
-      # Runs a single command using the runners shell
       - name: npm install
         run: npm install
 
-      # Runs a set of commands using the runners shell
+      - name: check env
+        run: echo $EMBER_ROOT_URL
+        env:
+          EMBER_ROOT_URL: "/ember-testy/"
+
       - name: ember build
         run: npm run build
         env:
           EMBER_ROOT_URL: "/ember-testy/"
-          
 
       - name: Upload build
         uses: actions/upload-artifact@v2
