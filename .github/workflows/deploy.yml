@@ -22,7 +22,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: @volta-cli/action
+      - name: "@volta-cli/action"
         uses: volta-cli/action@v1.7.0
 
 
