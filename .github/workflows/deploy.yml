@@ -49,23 +49,18 @@ jobs:
       - name: npm install
         run: npm install
 
-      - name: check env
-        run: echo $EMBER_ROOT_URL
-        env:
-          EMBER_ROOT_URL: "/ember-testy/"
-
       - name: ember build
         run: npm run build
         env:
           EMBER_ROOT_URL: "/ember-testy/"
 
-      - name: Upload build
+      - name: Upload build artifact
         uses: actions/upload-artifact@v2
         with:
           name: ember-dist
           path: dist
 
-      - name: Deploy
+      - name: Deploy to gh-pages
         uses: crazy-max/ghaction-github-pages@v2.2.0
         with:
           build_dir: dist
