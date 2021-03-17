@@ -60,10 +60,10 @@ jobs:
           name: ember-dist
           path: dist
 
-      - name: Deploy to gh-pages
-        uses: crazy-max/ghaction-github-pages@v2.2.0
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
-          build_dir: dist
-          keep_history: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: dist
+          clean-exclude: CNAME
+
