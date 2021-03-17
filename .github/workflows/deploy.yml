@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Deploy to pages
 
 # Controls when the action will run. 
 on:
@@ -64,5 +64,6 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v2.2.0
         with:
           build_dir: dist
+          keep_history: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
