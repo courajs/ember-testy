@@ -52,10 +52,8 @@ jobs:
       - name: Get Pages deploy path
         id: get_root_url
         run: |
-          echo $REPO
-          echo ${REPO#courajs}
-          echo hi
           echo "::set-output name=root_path::${REPO#${{github.repository_owner}}}/"
+          echo "::set-output name=deploy_url::https://${{github.repository_owner}}.github.io/${REPO#${{github.repository_owner}}}"
         env:
           REPO: ${{github.repository}}
 
