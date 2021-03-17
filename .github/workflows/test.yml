@@ -20,7 +20,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: get_url
-        run: echo "::set-output name=root_path::${REPO#${{github.repository_owner}}}"
+        run: |
+          echo $REPO
+          echo ${REPO#courajs}
+          echo hi
+          echo "::set-output name=root_path::${REPO#${{github.repository_owner}}/}"
         env:
           REPO: ${{github.repository}}
 
