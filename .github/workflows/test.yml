@@ -30,4 +30,4 @@ jobs:
           REPO: ${{github.repository}}
 
       - name: Run
-        run: echo ${{steps.get_url.outputs.root_path}}
+        run: echo ${{steps.get_root_url.outputs.root_path}}
