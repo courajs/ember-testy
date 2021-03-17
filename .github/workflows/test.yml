@@ -19,7 +19,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: get_url
+      - name: Get Pages deploy path
+        id: get_root_url
         run: |
           echo $REPO
           echo ${REPO#courajs}
