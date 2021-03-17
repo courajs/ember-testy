@@ -26,8 +26,17 @@ jobs:
           echo ${REPO#courajs}
           echo hi
           echo "::set-output name=root_path::${REPO#${{github.repository_owner}}}/"
+          echo "::set-output name=deploy_url::https://${{github.repository_owner}}.github.io/${REPO#${{github.repository_owner}}}"
         env:
           REPO: ${{github.repository}}
 
       - name: Run
-        run: echo ${{steps.get_root_url.outputs.root_path}}
+        run: |
+          echo ${{steps.get_root_url.outputs.root_path}}
+          echo ${{steps.get_root_url.outputs.deploy_url}}
+      
+      - name: Set repo URL
+        run: |
+          curl
+          -H "Accept: application/vnd.github.v3+json"
+          https://api.github.com/repos/courajs/ember-testy
