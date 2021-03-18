@@ -1,4 +1,4 @@
-name: CI
+name: Update project name
 on:
   create:
     branches: [ main, master ]
