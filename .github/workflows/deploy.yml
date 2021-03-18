@@ -3,7 +3,11 @@ on:
   # Triggers the workflow on push or pull request events but only for the default branch
   push:
     branches: [ main, master ]
-    
+  # Pushes from an action won't trigger further workflows by default.
+  # But we should re-deploy after updating the project name.
+  workflow_run:
+    workflows: ["Update project name"]
+    types: [completed]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
