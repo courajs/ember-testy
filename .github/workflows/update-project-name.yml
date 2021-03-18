@@ -1,0 +1,10 @@
+name: CI
+on:
+  create:
+    branches: [ main, master ]
+  workflow_dispatch:
+jobs:
+  update-project-name:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hello
