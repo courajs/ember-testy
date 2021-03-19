@@ -30,7 +30,7 @@ jobs:
           --exclude-dir=.github
           ember-testy .
           | xargs -0 sed --in-place
-          -e 's/ember-testy/${{steps.get_root_url.outputs.repo_name}}-new/g'
+          -e 's/ember-testy/${{steps.get_root_url.outputs.repo_name}}/g'
       - run: git status
       - run: git diff
       - name: Git Auto Commit
