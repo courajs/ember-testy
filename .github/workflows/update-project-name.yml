@@ -7,4 +7,7 @@ jobs:
   update-project-name:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello
+      - uses: actions/checkout@v2
+      - run: git status
+      - run: grep -rl ember-auto-deploy .
+
