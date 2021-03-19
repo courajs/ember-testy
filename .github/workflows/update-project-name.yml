@@ -25,8 +25,13 @@ jobs:
       - run: man sed
       - run: grep -rl --exclude-dir=.git ember-testy .
       - run: >
-          grep -rlZ --exclude-dir=.git ember-testy .
-          | xargs -0 sed --in-place -e 's/ember-testy/${{steps.get_root_url.outputs.repo_name}}-new/g'
+          grep -rlZ
+          --exclude-dir=.git
+          --exclude-dir=.github
+          ember-testy .
+          | xargs -0 sed --in-place
+          -e 's/ember-testy/${{steps.get_root_url.outputs.repo_name}}-new/g'
       - run: git status
       - run: git diff
+      - run: git add -A; git commit; git push
 
