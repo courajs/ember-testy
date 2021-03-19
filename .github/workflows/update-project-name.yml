@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git status
+      - run: ls -la
       - run: grep --version
       - run: grep --help
       - run: man grep
