@@ -24,7 +24,7 @@ jobs:
       - run: grep -rl --exclude-dir=.git ember-testy .
       - run: >
           grep -rlZ --exclude-dir=.git ember-testy .
-          | xargs -0 sed -i '' -e 's/ember-testy/${{steps.get_root_url.outputs.repo_name}}/g
+          | xargs -0 sed -i '' -e 's/ember-testy/${{steps.get_root_url.outputs.repo_name}}-new/g'
       - run: git status
       - run: git diff
 
