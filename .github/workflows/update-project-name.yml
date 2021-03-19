@@ -12,5 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: git status
       - run: grep --version
+      - run: grep --help
+      - run: man grep
       - run: grep -rl ember-auto-deploy .
 
