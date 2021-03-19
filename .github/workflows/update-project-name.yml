@@ -1,5 +1,7 @@
 name: Update project name
 on:
+  push:
+    branches: [ main, master ]
   create:
     branches: [ main, master ]
   workflow_dispatch:
@@ -9,5 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git status
+      - run: grep --version
       - run: grep -rl ember-auto-deploy .
 
