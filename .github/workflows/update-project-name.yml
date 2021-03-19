@@ -15,5 +15,5 @@ jobs:
       - run: grep --version
       - run: grep --help
       - run: man grep
-      - run: grep -rl ember-auto-deploy .
+      - run: grep -rl ember-testy .
 
