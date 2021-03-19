@@ -15,5 +15,5 @@ jobs:
       - run: grep --version
       - run: grep --help
       - run: man grep
-      - run: grep -rl --exclude-dir=.git ember-testy .
+      - run: grep -rzl --exclude-dir=.git ember-testy .
 
