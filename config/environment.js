@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   let ENV = {
-    modulePrefix: 'ember-testy-new',
+    modulePrefix: 'ember-testy',
     environment,
     rootURL: process.env['EMBER_ROOT_URL'] ||'/',
     locationType: 'auto',
