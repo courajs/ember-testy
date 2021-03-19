@@ -1,7 +1,5 @@
 name: Update project name
 on:
-  push:
-    branches: [ main, master ]
   create:
     branches: [ main, master ]
   workflow_dispatch:
